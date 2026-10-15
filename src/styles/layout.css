@@ -1,0 +1,356 @@
+/* ---------- Casco do app ---------- */
+.shell {
+  min-height: 100dvh;
+}
+
+.sidebar {
+  display: none;
+}
+
+.main {
+  padding: var(--s4) var(--s4) calc(var(--bottomnav-h) + var(--s8) + env(safe-area-inset-bottom));
+  max-width: 1160px;
+  margin: 0 auto;
+  min-width: 0;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  padding: calc(var(--s2) + env(safe-area-inset-top)) var(--s4) var(--s2);
+  background: rgb(248 250 252 / 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar .brand {
+  flex: 1;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--green-900);
+  font-size: var(--fs-lg);
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--green-900);
+  color: #fff;
+}
+
+.page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s3);
+  margin: var(--s2) 0 var(--s5);
+}
+
+.page-header p {
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  margin-top: 2px;
+}
+
+.page-actions {
+  display: flex;
+  gap: var(--s2);
+  flex-wrap: wrap;
+}
+
+.section {
+  display: grid;
+  gap: var(--s4);
+  margin-bottom: var(--s6);
+}
+
+/* ---------- Navegação inferior (celular) ---------- */
+.bottomnav {
+  position: fixed;
+  z-index: 30;
+  inset: auto 0 0 0;
+  height: calc(var(--bottomnav-h) + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  background: var(--card);
+  border-top: 1px solid var(--border);
+}
+
+.bottomnav a,
+.bottomnav button {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  min-height: 56px;
+  padding-top: 8px;
+  font-size: 11px;
+  font-weight: 560;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.bottomnav a.active {
+  color: var(--green-900);
+}
+
+.bottomnav .fab {
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  min-height: 52px;
+  padding: 0;
+  margin-top: -18px;
+  border-radius: 16px;
+  background: var(--green-900);
+  color: #fff;
+  box-shadow: 0 6px 16px rgb(20 83 45 / 0.35);
+}
+
+/* ---------- Desktop ---------- */
+@media (min-width: 960px) {
+  .topbar,
+  .bottomnav {
+    display: none;
+  }
+
+  .sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: var(--sidebar-w);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s5);
+    padding: var(--s5) var(--s3);
+    background: var(--card);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+  }
+
+  .sidebar .brand {
+    padding: 0 var(--s2);
+  }
+
+  .main {
+    margin-left: var(--sidebar-w);
+    margin-right: auto;
+    padding: var(--s6) var(--s8) var(--s8);
+    max-width: calc(1160px + var(--sidebar-w));
+    width: calc(100% - var(--sidebar-w));
+  }
+
+  .main > * {
+    max-width: 1160px;
+  }
+}
+
+.nav {
+  display: grid;
+  gap: 2px;
+}
+
+.nav-label {
+  padding: var(--s3) var(--s3) var(--s1);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  min-height: 40px;
+  padding: 0 var(--s3);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-weight: 520;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  background: var(--surface-2);
+}
+
+.nav a.active {
+  background: var(--green-50);
+  color: var(--green-900);
+  font-weight: 620;
+}
+
+.nav a svg {
+  color: var(--muted);
+}
+
+.nav a.active svg {
+  color: var(--green-700);
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  display: grid;
+  gap: var(--s2);
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  padding: var(--s2);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.user-chip:hover {
+  background: var(--surface-2);
+  text-decoration: none;
+}
+
+.more-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s2);
+}
+
+.more-grid a {
+  display: grid;
+  justify-items: center;
+  gap: var(--s2);
+  padding: var(--s4) var(--s2);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 560;
+  text-align: center;
+  text-decoration: none;
+}
+
+.more-grid a svg {
+  color: var(--green-700);
+}
+
+/* ---------- Faixa de conexão ---------- */
+.offline-banner {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s2);
+  padding: 8px 16px;
+  background: #78350f;
+  color: #fff;
+  font-size: var(--fs-sm);
+  font-weight: 560;
+  text-align: center;
+}
+
+/* ---------- Telas de autenticação ---------- */
+.auth-page {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: var(--s6) var(--s4);
+}
+
+.auth-card {
+  width: min(420px, 100%);
+  display: grid;
+  gap: var(--s5);
+}
+
+.auth-card .card {
+  padding: var(--s6);
+}
+
+.auth-card h1 {
+  font-size: var(--fs-xl);
+}
+
+.auth-links {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s3);
+  flex-wrap: wrap;
+  font-size: var(--fs-sm);
+}
+
+.center-page {
+  min-height: 60dvh;
+  display: grid;
+  place-items: center;
+}
+
+.wizard-steps {
+  display: flex;
+  gap: var(--s2);
+  margin-bottom: var(--s2);
+}
+
+.wizard-steps span {
+  flex: 1;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--border);
+}
+
+.wizard-steps span.done {
+  background: var(--green-600);
+}
+
+/* ---------- Impressão (relatório em PDF pelo navegador) ---------- */
+@media print {
+  .sidebar,
+  .topbar,
+  .bottomnav,
+  .offline-banner,
+  .toasts,
+  .no-print {
+    display: none !important;
+  }
+
+  .main {
+    margin: 0;
+    padding: 0;
+    max-width: none;
+    width: auto;
+  }
+
+  .card {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+}
+
+.print-only {
+  display: none;
+}
